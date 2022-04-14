@@ -16,9 +16,19 @@ const App = () => {
       .setStyle({
         backgroundColor: "var(--color-1)",
         width: "100%",
-        height: "1500px"
+        height: "1500px",
+        fontSize: "var(--font-size-1)",
       }, ".scroll-content")
       .init();
+
+    Element(scrollContent1)
+      .setInnerText("lorem loremh lorem loremhlorem loremh lorem loremh lorem loremh lorem loremh lorem loremh")
+
+    Element(scrollContent2)
+      .setInnerText("lorem loremh lorem loremhlorem loremh lorem loremh lorem loremh lorem loremh lorem loremh")
+
+    Element(scrollContent3)
+      .setInnerText("lorem loremh lorem loremhlorem loremh lorem loremh lorem loremh lorem loremh lorem loremh")
 
     Element(scrollContent2)
       .setStyle({
@@ -26,14 +36,10 @@ const App = () => {
       }, ".scroll-content-middle")
 
     const elements = Element()
-      .createElement("div", 5)
+      .createElement("div", 20)
       .setStyle({
-        // maxWidth: "1000px",
-        // maxHeight: "800px",
-        // width: "100%",
-        // height: "100%",
-        width: "1000px",
-        height: "800px",
+        width: "600px",
+        height: "300px",
 
         backgroundColor: "purple",
         margin: "0 20px 0 0",
@@ -52,7 +58,8 @@ const App = () => {
       .createElement("div")
       .setStyle({
         position: "sticky",
-        top: "10px",
+        top: "200px",
+        // transform: "translateY(-50%)",
         width: "100%",
         overflow: "hidden",
       }, ".sticky-wrapper")
@@ -74,6 +81,7 @@ const App = () => {
         "--color-1": "lightblue",
         "--color-2": "lightgreen",
         "--color-3": "orange",
+        "--font-size-1": "150px",
       })
       .appendChildren([
         scrollContent1,

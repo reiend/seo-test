@@ -1,5 +1,5 @@
 const path = require("path");                                     /* node path */
-const glob = require("glob");                                 
+const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");         /* for loading / create html */
 const MinicssExtractPlugin = require("mini-css-extract-plugin")   /* extracting css from js*/
 const PurgecssPlugin = require('purgecss-webpack-plugin')         /* for cleaning unused style */
@@ -12,7 +12,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
 
-  output:   {
+  output: {
     filename: "[name][contenthash].bundle.js",
     path: path.resolve(__dirname, "./dist"),
     clean: true,
@@ -26,7 +26,7 @@ module.exports = {
 
       // assets
       "@globals": `${ROOT_PATH.src}/res/globals`,
-      
+
       // assets
       "@images": `${ROOT_PATH.src}/res/assets/images`,
 
@@ -40,14 +40,14 @@ module.exports = {
       // load css
       {
         // sass or scss
-        test: /\.s[ac]ss$/i, 
-        use: 
+        test: /\.s[ac]ss$/i,
+        use:
           [
-            MinicssExtractPlugin.loader, 
+            MinicssExtractPlugin.loader,
             "css-loader",
             "sass-loader",
           ]
-      }, 
+      },
       {
         // transpiler
         test: /\.m?js$/,
@@ -56,7 +56,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
-           "targets": { "esmodules": true }
+            "targets": { "esmodules": true }
           },
         },
       },
@@ -78,7 +78,12 @@ module.exports = {
     // create root html
     new HtmlWebpackPlugin({
       title: "Project js",
+      template: "./src/index.html",
       filename: "index.html",
+      favicon: "./public/assets/seo.png",
+      meta: {
+        description: { name: 'description', content: 'SEO testing' },
+      },
     }),
     // css extractor from js
     new MinicssExtractPlugin({
@@ -86,7 +91,7 @@ module.exports = {
     }),
     // unused style clean up
     new PurgecssPlugin({
-      paths: glob.sync(`${ROOT_PATH.src}/**/*`, {nodir: true}),
+      paths: glob.sync(`${ROOT_PATH.src}/**/*`, { nodir: true }),
     })
   ],
 

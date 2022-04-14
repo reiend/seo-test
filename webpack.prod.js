@@ -77,8 +77,12 @@ module.exports = {
   plugins: [
     // create root html
     new HtmlWebpackPlugin({
-      title: "Slack app",
+      template: "./src/index.html",
       filename: "index.html",
+      favicon: "./public/assets/seo.png",
+      meta: {
+        description: { name: 'description', content: 'SEO testing' },
+      }
     }),
     // css extractor from js
     new MinicssExtractPlugin({
